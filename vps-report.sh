@@ -10,9 +10,6 @@ send_report() {
        -d parse_mode="Markdown"
 }
 
-# Get hostname
-HOSTNAME=$(hostname)
-
 # Gather system info
 UPTIME=$(uptime -p)
 LOAD=$(uptime | awk -F'load average:' '{ print $2 }')
