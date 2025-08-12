@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 # Telegram Bot Status Report Script
-
+DIR_PATH="$(dirname "$(readlink -f "$0")")"
+CONFIG_FILE="$DIR_PATH/vps-report.conf"
+if [ -f "$CONFIG_FILE" ]; then
+  source "$CONFIG_FILE"
+else 
+  echo "Config file not found: $CONFIG_FILE"
+  exit 1
+fi
 # Show help and exit if -h or --help is passed
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   cat << EOF
