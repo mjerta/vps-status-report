@@ -19,8 +19,8 @@ Options:
   -h, --help      Show this help message and exit
 
 Environment variables required:
-  TELEGRAM_TOKEN    Your Telegram bot token
-  TELEGRAM_CHAT_ID  The chat ID to send the message to
+  TOKEN    Your Telegram bot token
+  CHAT_ID  The chat ID to send the message to
 
 What the script reports:
   - Hostname
@@ -29,8 +29,9 @@ What the script reports:
   - Disk usage of /
   - Memory usage
 
+# Below are example commands showing how to run this script with required environment variables.
 Example:
-  TELEGRAM_TOKEN=xxx TELEGRAM_CHAT_ID=yyy $(basename "$0")
+  TOKEN=xxx CHAT_ID=yyy $(basename "$0")
 
 EOF
   exit 0
@@ -41,8 +42,8 @@ HOSTNAME=$(hostname)
 # Function to send a message to Telegram
 send_report() {
   local message="$1"
-  curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
-       -d chat_id="${TELEGRAM_CHAT_ID}" \
+  curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+       -d chat_id="${CHAT_ID}" \
        -d text="$message" \
        -d parse_mode="Markdown"
 }
