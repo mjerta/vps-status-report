@@ -1,5 +1,34 @@
 #!/usr/bin/env bash
 # Telegram Bot Status Report Script
+
+# Show help and exit if -h or --help is passed
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  cat << EOF
+Usage: $(basename "$0") [options]
+
+Sends a system status report to a Telegram chat via bot.
+
+Options:
+  -h, --help      Show this help message and exit
+
+Environment variables required:
+  TELEGRAM_TOKEN    Your Telegram bot token
+  TELEGRAM_CHAT_ID  The chat ID to send the message to
+
+What the script reports:
+  - Hostname
+  - System uptime
+  - Load average
+  - Disk usage of /
+  - Memory usage
+
+Example:
+  TELEGRAM_TOKEN=xxx TELEGRAM_CHAT_ID=yyy $(basename "$0")
+
+EOF
+  exit 0
+fi
+
 HOSTNAME=$(hostname)
 
 # Function to send a message to Telegram
