@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Telegram Bot Status Report Script
+HOSTNAME=$(hostname)
 
 # Function to send a message to Telegram
 send_report() {
